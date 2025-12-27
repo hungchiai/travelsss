@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>曼谷自由行行程表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Noto Sans TC", Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #023a5a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      border-left: 6px solid #1417e4;
+      padding-left: 10px;
+    }
+    .spot {
+      margin-bottom: 12px;
+    }
+    .time {
+      margin-left: 20px; 
+      color: #6198ff;
+      font-size: 14px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 14px;
+    }
+    .food-link {
+  cursor: pointer;
+}
+
+    .food-link:hover {
+    color: #6198ff;
+    }
+
+    .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .modal-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    }
+
+    .modal-card h3 {
+    margin-top: 0;
+    }
+
+    .modal-card a {
+    color: #6164ff;
+    text-decoration: none;
+    font-weight: bold;
+    }
+
+    .fold-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .arrow {
+    transition: transform 0.2s ease;
+    }
+
+    .fold-header.active .arrow {
+    transform: rotate(180deg);
+    }
+
+     html {
+    scroll-behavior: smooth;
+  }
+
+  </style>
+</head>
+<body>
+
+<header id="top">
+  <h1>金憨曼六天五夜行程</h1>
+  <p>2026/01/12-01/17 抱怨者會得帶狀性泡疹必留疤</p>
+
+  <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:15px;">
+    <a href="#bts-map" style="text-decoration:none; background:#023a5a; color:white; padding:10px 16px; border-radius:8px; font-weight:bold;">🚆 曼谷交通地圖 BTS</a>
+    <a href="#itinerary" style="text-decoration:none; background:#023a5a; color:white; padding:10px 16px; border-radius:8px; font-weight:bold;">📅 行程</a>
+    <a href="#thai-tips" style="text-decoration:none; background:#023a5a; color:white; padding:10px 16px; border-radius:8px; font-weight:bold;">⚠️ 泰國注意事項</a>
+    <a href="#packing-list" style="text-decoration:none; background:#023a5a; color:white; padding:10px 16px; border-radius:8px; font-weight:bold;">🎒 行李清單</a>
+  </div>
+</header>
+
+<section id="bts-map">
+  <h2>🚆 曼谷交通地圖 BTS </h2>
+
+  <div class="spot">
+    📍 查詢 BTS 路線圖
+  </div>
+
+  <div class="spot food-link" onclick="window.open('https://www.bangkoktransitmap.com/', '_blank')">
+    👉 點我查看 Bangkok Transit Map（官方交通地圖）
+ 
+</div>
+
+</section>
+
+<section id="itinerary">
+  <h2>📅 1/12（✈️ 抵達曼谷）</h2>
+
+  <div class="spot">
+    🕥 <strong>11:00</strong> 出發前往桃園機場
+  </div>
+
+  <div class="spot">
+    🛫 <strong>13:50</strong> Taiwan 起飛 (第一航廈)
+  </div>
+
+  <div class="spot">
+    🛬 <strong>16:45</strong> 抵達曼谷
+  </div>
+
+  <div class="spot food-link" onclick="openCard('hotel')">
+    🏨 入住飯店
+  </div>
+
+  <div id="first-meal" class="spot">
+    🍽️ 晚餐：
+    <ul style="margin-left:20px; margin-top:5px;">
+      <li>711 簡單解決</li>
+      <li>Airbnb附近找餐廳</li>
+      <li>霓虹夜市</li>
+    </ul>
+  <div style="text-align:right; margin-top:10px;">
+  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+</div>
+
+</section>
+
+<section>
+  <h2>📅 1/13（Central World & 水門市場）</h2>
+
+  <div class="spot">🚆 BTS Chit Lom（E1）2、6 號出口</div>
+
+  <div class="spot">
+    Central World
+    <div class="time">營業時間：10:00–22:00</div>
+  </div>
+
+  <div class="spot">▫ 4F SuperRich 換錢</div>
+  <div class="spot">▫ 3F Thong Smith 通思密船麵</div>
+  <div class="spot">▫ 1F Cha Tra Mue 泰式奶茶</div>
+
+  <div class="spot">
+    Thao Maha Brahma（四面佛）
+    <div class="time">營業時間：06:00–22:00</div>
+  </div>
+
+<div class="spot food-link" onclick="openCard('pondtip')">
+  水門市場
+  <div class="time">營業時間：11:00–20:00</div>
+</div>
+
+
+  <div class="spot">
+    Topkart Bangkok 卡丁車
+    <div class="time">營業時間：10:00–22:00</div>
+  </div>
+
+  <div class="spot">
+    Big C 超市
+    <div class="time">營業時間：09:00–00:00</div>
+  </div>
+
+  <div class="spot">
+    Mind n Matter Massage
+    <div class="time">營業時間：11:00–23:00</div>
+   <div style="text-align:right; margin-top:10px;">
+  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+</div>
+</section>
+
+<section>
+  <h2>📅 1/14（Ari & 市區夜景）</h2>
+
+  <div class="spot">🚆 BTS Ari（N5）</div>
+
+  <div class="spot food-link" onclick="openCard('smizzle')">
+ Smizzle Burger
+</div>
+
+  <div class="spot food-link" onclick="openCard('Yudeemee')">
+ Yudeemeesuk Mango Sticky Rice Ari
+</div>
+
+  <div class="spot">☕ GUMP’s  Ari Community Space</div>
+  <div class="spot">🚆 Chong Nonsi（S3）3 號出口</div>
+
+ <div class="spot food-link" onclick="openCard('mahanakhon')">
+    王權 Mahanakhon SkyWalk
+      <div class="time">預約時段：16:00–19:00</div>
+</div>
+
+
+  <div class="spot">🚆 BTS National Stadium（W1）2 號出口</div>
+  <div class="spot fold-header" onclick="toggleFood()">
+  <span>🍜 朱拉隆功美食街</span>
+  <span class="arrow">▼</span>
+</div>
+
+<div id="chula-food" class="fold-content">
+  <div class="spot food-link" onclick="openCard('satay')">🐷 Pork Satay Nai Song</div>
+  <div class="spot food-link" onclick="openCard('pungdet')">🥐 PUNGDET 爆漿餐包</div>
+  <div class="spot food-link" onclick="openCard('tuaytung')">🍦 Tuay Tung Ice-cream</div>
+  <div class="spot food-link" onclick="openCard('elvis')">🍜 Elvis Suki 豬肉乾冬粉</div>
+  <div class="spot food-link" onclick="openCard('jeho')">🍲 Jeh O Chula 冬蔭媽媽麵</div>
+  <div class="spot food-link" onclick="openCard('bake')">🥐 Bake A Wish Baker</div>
+ <div style="text-align:right; margin-top:10px;">
+  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+</div>
+
+
+</section>
+
+<section>
+  <h2>📅 1/15（寺廟 & 游河）</h2>
+
+  <div class="spot">🚕 鄭王廟（Grab / Bolt）</div>
+
+  <div class="spot">
+    <div class="time">營業時間：08:00–18:00</div>
+  </div>
+
+  <div class="spot">
+    ⛵ICONSIAM 暹羅天地(N8 to I★)
+    <div class="time">營業時間：10:00–22:00</div>
+  </div>
+
+   <div class="spot">
+    ⛵河濱夜市 (I★ to A★)
+    <div class="time">營業時間：16:00–00:00</div>
+  <div style="text-align:right; margin-top:10px;">
+  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+</div>
+  
+</section>
+
+<section>
+  <h2>📅 1/16（市集日）</h2>
+
+  <div class="spot">🚆 Khlong Toei（BL24）</div>
+
+<div class="spot food-link" onclick="openCard('phedmark')">
+  🌶️ Phed Mark 
+</div>
+
+<div class="spot food-link" onclick="openCard('maevaree')">
+  🥭 Mae Varee
+</div>
+
+
+  <div class="spot">🚆 Yaek Kor Por Aor（N23）4 號出口</div>
+
+  <div class="spot">
+    Save One Go Market
+    <div class="time">營業時間：16:00–00:00</div>
+  </div>
+
+  <div class="spot">🚆 Mo Chit（N8）</div>
+    <div class="spot">
+    恰圖恰假日市集
+    <div class="time">營業時間：18:00~00:00</div>
+   <div style="text-align:right; margin-top:10px;">
+  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+</div>
+</section>
+
+<section>
+  <h2>📅 1/17（✈️ 回台灣）</h2>
+
+  <div class="spot">
+    🕥 <strong>10:30</strong> 出發前往機場
+  </div>
+
+  <div class="spot">
+    🛫 <strong>14:05</strong> 起飛
+  </div>
+
+  <div class="spot">
+    🛬 <strong>18:40</strong> 抵達台灣
+   <div style="text-align:right; margin-top:10px;">
+  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+</div>
+
+  
+
+</section>
+<section id="thai-tips">
+  <h2>⚠️ 泰國注意事項</h2>
+  <ol style="padding-left: 20px; line-height: 1.6;">
+    <li>
+      <strong>TDAC 泰國數位入境卡：</strong>需於抵達前 72 小時內申請 (免費!)  
+      <a href="https://bkk.com.tw/tdac/#TDAC_%E6%B3%B0%E5%9C%8B%E6%95%B8%E4%BD%8D%E5%85%A5%E5%A2%83%E5%8D%A1%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F" target="_blank">申請連結</a>
+    </li>
+    <li><strong>機場接送：</strong>已提前安排接送。</li>
+    <li>
+      <strong>交通：</strong>建議先下載並註冊 Grab / Bolt，盡量不要路邊攔車。  
+      嘟嘟車可體驗，記得殺價（建議從5折開始談），尖峰時段曼谷塞車很嚴重，搭 BTS / MRT 比叫車快。BTS 卡可在 KKday 先買，一張約100元。
+    </li>
+    <li><strong>限制物品：</strong>藥物、副食品、化妝品、植物、動物、空拍機、槍等需申報並經核准。</li>
+    <li>
+      <strong>機場入境 SOP：</strong>準備文件包括護照、TDAC QR Code、機票、住宿證明、海關申報單。  
+      綠色通道（無需申報）、紅色通道（需要申報）。行動電源容量不超過 32000mAh，需提前拿出來。
+    </li>
+    <li><strong>出境：</strong>至少提前 2 小時到機場，海關排隊時間長。</li>
+    <li><strong>網路：</strong>建議購買 eSIM，六天吃到飽約 250 泰銖。</li>
+    <li>
+      <strong>電壓與插座：</strong>泰國 220V，插座主要為 A/B/C 型，如果電器的電壓只限110V，要自備變壓器。
+    </li>
+    <li><strong>旅平險：</strong>建議購買保障旅行期間的保險。</li>
+    <li>
+      <strong>宗教禮儀：</strong>進入寺廟等場所請脫鞋、穿著莊重。女性禁止無袖、短褲/短裙、露背裝、拖鞋；男性建議短袖長褲。
+    </li>
+    <li>
+      <strong>退稅：</strong>在貼有「VAT REFUND FOR TOURISTS」標誌的店家消費，單日單店滿 2,000 泰銖可退稅。購買時需出示護照、退稅單與發票。商品需於60天內離境。
+    </li>
+    <li><strong>小費文化：</strong>飯店、按摩、司機可視情況給 20–100 泰銖。</li>
+    <li><strong>公廁：</strong>上公廁需付費，大約 5 泰銖。</li>
+    <li><strong>天氣：</strong>早晚溫差大，薄外套一定要帶。</li>
+    <li><strong>時差：</strong>泰國比曼谷慢1小時。</li>
+   <div style="text-align:right; margin-top:10px;">
+  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+</div>
+</section>
+<section id="packing-list">
+  <h2>🎒 行李清單（四人版）</h2>
+
+  <div class="spot">
+    📑 <strong>重要證件</strong>
+    <ul>
+      <li>護照（效期 6 個月以上）
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="p1施">施</label>
+          <label><input type="checkbox" id="p1咪">咪</label>
+          <label><input type="checkbox" id="p1魚">魚</label>
+          <label><input type="checkbox" id="p1洪">洪</label>
+        </div>
+      </li>
+      <li>TDAC 入境卡 QR Code
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="p2施">施</label>
+          <label><input type="checkbox" id="p2咪">咪</label>
+          <label><input type="checkbox" id="p2魚">魚</label>
+          <label><input type="checkbox" id="p2洪">洪</label>
+        </div>
+      </li>
+      <li>機票、住宿證明
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="p3施">施</label>
+          <label><input type="checkbox" id="p3咪">咪</label>
+          <label><input type="checkbox" id="p3魚">魚</label>
+          <label><input type="checkbox" id="p3洪">洪</label>
+        </div>
+      </li>
+      <li>旅平險
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="p4施">施</label>
+          <label><input type="checkbox" id="p4咪">咪</label>
+          <label><input type="checkbox" id="p4魚">魚</label>
+          <label><input type="checkbox" id="p4洪">洪</label>
+        </div>
+      </li>
+      <li>身分證、健保卡
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="p5施">施</label>
+          <label><input type="checkbox" id="p5咪">咪</label>
+          <label><input type="checkbox" id="p5魚">魚</label>
+          <label><input type="checkbox" id="p5洪">洪</label>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="spot">
+    👕 <strong>衣物</strong>
+    <ul>
+      <li>換洗衣褲
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="c1施">施</label>
+          <label><input type="checkbox" id="c1咪">咪</label>
+          <label><input type="checkbox" id="c1魚">魚</label>
+          <label><input type="checkbox" id="c1洪">洪</label>
+        </div>
+      </li>
+      <li>薄長袖或薄外套
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="c2施">施</label>
+          <label><input type="checkbox" id="c2咪">咪</label>
+          <label><input type="checkbox" id="c2魚">魚</label>
+          <label><input type="checkbox" id="c2洪">洪</label>
+        </div>
+      </li>
+      <li>內衣褲、襪子
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="c3施">施</label>
+          <label><input type="checkbox" id="c3咪">咪</label>
+          <label><input type="checkbox" id="c3魚">魚</label>
+          <label><input type="checkbox" id="c3洪">洪</label>
+        </div>
+      </li>
+      <li>墨鏡
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="c4施">施</label>
+          <label><input type="checkbox" id="c4咪">咪</label>
+          <label><input type="checkbox" id="c4魚">魚</label>
+          <label><input type="checkbox" id="c4洪">洪</label>
+        </div>
+      </li>
+      <li>帽子
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="c5施">施</label>
+          <label><input type="checkbox" id="c5咪">咪</label>
+          <label><input type="checkbox" id="c5魚">魚</label>
+          <label><input type="checkbox" id="c5洪">洪</label>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="spot">
+    📱 <strong>電子用品</strong>
+    <ul>
+      <li>充電線
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="e1施">施</label>
+          <label><input type="checkbox" id="e1咪">咪</label>
+          <label><input type="checkbox" id="e1魚">魚</label>
+          <label><input type="checkbox" id="e1洪">洪</label>
+        </div>
+      </li>
+      <li>行動電源（≤32000mAh）
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="e2施">施</label>
+          <label><input type="checkbox" id="e2咪">咪</label>
+          <label><input type="checkbox" id="e2魚">魚</label>
+          <label><input type="checkbox" id="e2洪">洪</label>
+        </div>
+      </li>
+      <li>轉接插頭（泰國 220V，A/B/C 型）
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="e3施">施</label>
+          <label><input type="checkbox" id="e3咪">咪</label>
+          <label><input type="checkbox" id="e3魚">魚</label>
+          <label><input type="checkbox" id="e3洪">洪</label>
+        </div>
+      </li>
+      <li>耳機
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="e4施">施</label>
+          <label><input type="checkbox" id="e4咪">咪</label>
+          <label><input type="checkbox" id="e4魚">魚</label>
+          <label><input type="checkbox" id="e4洪">洪</label>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="spot">
+    🧴 <strong>盥洗與藥品</strong>
+    <ul>
+      <li>防曬乳
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="h1施">施</label>
+          <label><input type="checkbox" id="h1咪">咪</label>
+          <label><input type="checkbox" id="h1魚">魚</label>
+          <label><input type="checkbox" id="h1洪">洪</label>
+        </div>
+      </li>
+      <li>防蚊液
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="h2施">施</label>
+          <label><input type="checkbox" id="h2咪">咪</label>
+          <label><input type="checkbox" id="h2魚">魚</label>
+          <label><input type="checkbox" id="h2洪">洪</label>
+        </div>
+      </li>
+      <li>腸胃藥
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="h3施">施</label>
+          <label><input type="checkbox" id="h3咪">咪</label>
+          <label><input type="checkbox" id="h3魚">魚</label>
+          <label><input type="checkbox" id="h3洪">洪</label>
+        </div>
+      </li>
+      <li>止痛藥
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="h4施">施</label>
+          <label><input type="checkbox" id="h4咪">咪</label>
+          <label><input type="checkbox" id="h4魚">魚</label>
+          <label><input type="checkbox" id="h4洪">洪</label>
+        </div>
+      </li>
+      <li>濕紙巾、衛生紙
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="h5施">施</label>
+          <label><input type="checkbox" id="h5咪">咪</label>
+          <label><input type="checkbox" id="h5魚">魚</label>
+          <label><input type="checkbox" id="h5洪">洪</label>
+        </div>
+      </li>
+      <li>隱眼、隱眼藥水
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="h6施">施</label>
+          <label><input type="checkbox" id="h6咪">咪</label>
+          <label><input type="checkbox" id="h6魚">魚</label>
+          <label><input type="checkbox" id="h6洪">洪</label>
+        </div>
+      </li>
+      <li>化妝品
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="h7施">施</label>
+          <label><input type="checkbox" id="h7咪">咪</label>
+          <label><input type="checkbox" id="h7魚">魚</label>
+          <label><input type="checkbox" id="h7洪">洪</label>
+        </div>
+      </li>
+      <li>酒精
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="h8施">施</label>
+          <label><input type="checkbox" id="h8咪">咪</label>
+          <label><input type="checkbox" id="h8魚">魚</label>
+          <label><input type="checkbox" id="h8洪">洪</label>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="spot">
+    💰 <strong>錢</strong>
+    <ul>
+      <li>錢包
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="m1施">施</label>
+          <label><input type="checkbox" id="m1咪">咪</label>
+          <label><input type="checkbox" id="m1魚">魚</label>
+          <label><input type="checkbox" id="m1洪">洪</label>
+        </div>
+      </li>
+      <li>泰銖或台幣一萬~一萬五
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="m2施">施</label>
+          <label><input type="checkbox" id="m2咪">咪</label>
+          <label><input type="checkbox" id="m2魚">魚</label>
+          <label><input type="checkbox" id="m2洪">洪</label>
+        </div>
+      </li>
+      <li>零錢（公廁、小費）
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="m3施">施</label>
+          <label><input type="checkbox" id="m3咪">咪</label>
+          <label><input type="checkbox" id="m3魚">魚</label>
+          <label><input type="checkbox" id="m3洪">洪</label>
+        </div>
+      </li>
+    </ul>
+    <div style="text-align:right; margin-top:10px;">
+      <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  section ul {
+    padding-left: 20px;
+    list-style: none;
+  }
+  section li {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  .checkbox-group input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+</style>
+
+
+<footer>
+  © 金憨曼行程｜出任務小洪2026
+</footer>
+<div id="modal" class="modal" onclick="closeCard()">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <h3 id="modal-title"></h3>
+    <p id="modal-time"></p>
+    <p id="modal-must"></p>
+    <a id="modal-map" href="#" target="_blank">📍 Google Maps</a>
+     <a id="modal-klook" href="#" target="_blank">🛒 Klook 預約</a>
+  </div>
+</div>
+
+<script>
+    function toggleFood() {
+    const food = document.getElementById("chula-food");
+    const header = document.querySelector(".fold-header");
+
+    const isOpen = food.style.display === "block";
+
+    food.style.display = isOpen ? "none" : "block";
+    header.classList.toggle("active", !isOpen);
+    }
+
+  const foodData = {
+    smizzle: {
+      title: "🐷 Smizzle Burger",
+      time: "營業時間：09:00–02:00",
+      must: "必點：uncle sam",
+      map: "https://maps.app.goo.gl/Je6fQyxLZ6hNdqR89"
+    },
+    mahanakhon: {
+    title: "🏙️ 王權 Mahanakhon SkyWalk",
+    time: "預約時段：16:00–19:00",
+    must: "",
+    map: "https://maps.google.com/?q=Mahanakhon+SkyWalk",
+    klook: "https://www.klook.com/zh-TW/activity/16870-king-power-mahanakhon-skywalk-ticket-bangkok/?spm=SearchResult.SearchResult_LIST&clickId=135d90a549"
+    },
+
+    
+    Yudeemee: {
+      title: "🐷 Yudeemeesuk Mango Sticky Rice Ari",
+      time: "營業時間：11:00–20:00",
+      must: "必點：芒果糯米飯",
+      map: "https://maps.app.goo.gl/gofMy8aBKyMhW6eu8"
+    },
+
+    satay: {
+      title: "🐷 Pork Satay Nai Song",
+      time: "營業時間：09:30–22:00",
+      must: "必點：豬肉沙嗲",
+      map: "https://maps.google.com/?q=Pork+Satay+Nai+Song+Banthat+Thong"
+    },
+    pungdet: {
+      title: "🥐 PUNGDET 爆漿餐包",
+      time: "營業時間：11:30–23:30",
+      must: "必點：奶油砂糖、香蘭",
+      map: "https://maps.google.com/?q=PUNGDET+Banthat+Thong"
+    },
+    tuaytung: {
+      title: "🍦 Tuay Tung Ice-cream",
+      time: "營業時間：11:00–00:30",
+      must: "必點：漢堡冰淇淋",
+      map: "https://maps.google.com/?q=Tuay+Tung+Ice+Cream+Banthat+Thong"
+    },
+    elvis: {
+      title: "🍜 Elvis Suki ",
+      time: "營業時間：15:30–00:00",
+      must: "必點：豬肉乾冬粉",
+      map: "https://maps.google.com/?q=Elvis+Suki+Banthat+Thong"
+    },
+    jeho: {
+      title: "🍲 Jeh O Chula 冬蔭媽媽麵",
+      time: "營業時間：16:30–00:00",
+      must: "必點：冬蔭媽媽麵海鮮鍋",
+      map: "https://maps.google.com/?q=Jeh+O+Chula"
+    },
+    bake: {
+      title: "🥐 Bake A Wish Baker",
+      time: "營業時間：17:00–23:00",
+      must: "必點：奶油鹽可頌",
+      map: "https://maps.app.goo.gl/zNermJhBYPtXnb99A"
+    },
+    phedmark: {
+  title: "🌶️ Phed Mark ",
+  time: "營業時間：10:00–19:00",
+  must: "必點：打拋豬飯（微辣就很辣）",
+  map: "https://maps.google.com/?q=Phed+Mark+Bangkok"
+},
+maevaree: {
+  title: "🥭 Mae Varee ",
+  time: "營業時間：06:00–22:30",
+  must: "必點：芒果糯米飯",
+  map: "https://maps.google.com/?q=Mae+Varee+Thonglor"
+},
+pondtip: {
+  title: " Kuang Heng Pratu Nam Chicken Rice ",
+  time: "營業時間：06:00–00:00",
+  must: "必點：海南雞飯",
+  map: "https://maps.app.goo.gl/MTiatmrxL86nxrp17"
+},
+hotel: {
+  title: "🏨 入住飯店",
+  time: "14:00check in/11:00check out",
+  must: "盥洗用具要自備",
+  map: "https://www.airbnb.com.tw/rooms/33435164?source_impression_id=p3_1766849548_P3EkOnu94PApHO7G"
+},
+
+
+
+  };
+
+  function openCard(key) {
+    const data = foodData[key];
+    document.getElementById("modal-title").innerText = data.title;
+    document.getElementById("modal-time").innerText = data.time;
+    document.getElementById("modal-must").innerText = data.must;
+    document.getElementById("modal-map").href = data.map;
+
+   
+    const klookLink = document.getElementById("modal-klook");
+    if (data.klook) {
+        klookLink.href = data.klook;
+        klookLink.style.display = "inline";
+    } else {
+        klookLink.style.display = "none";
+    }
+
+    document.getElementById("modal").style.display = "flex";
+}
+function closeCard() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+
+</body>
+</html>
