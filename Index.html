@@ -98,6 +98,61 @@
      html {
     scroll-behavior: smooth;
   }
+  .day-card {
+  border-left: 6px solid #6198ff;
+  background: #f9fbff;
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.day-card .spot {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: white;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.day-card .spot.food-link {
+  transition: all .2s ease;
+}
+
+.day-card .spot.food-link:hover {
+  background: #eef4ff;
+  transform: translateY(-1px);
+}
+
+.sub-list {
+  margin-left: 18px;
+  font-size: 15px;
+}
+.member-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: white;
+}
+
+.member img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.8);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  margin-bottom: 6px;
+}
+
 
   </style>
 </head>
@@ -107,13 +162,96 @@
   <h1>金憨曼六天五夜行程</h1>
   <p>2026/01/12-01/17 抱怨者會得帶狀性泡疹必留疤</p>
 
-  <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:15px;">
-    <a href="#bts-map" style="text-decoration:none; background:#023a5a; color:white; padding:10px 16px; border-radius:8px; font-weight:bold;">🚆 曼谷交通地圖 BTS</a>
-    <a href="#itinerary" style="text-decoration:none; background:#023a5a; color:white; padding:10px 16px; border-radius:8px; font-weight:bold;">📅 行程</a>
-    <a href="#thai-tips" style="text-decoration:none; background:#023a5a; color:white; padding:10px 16px; border-radius:8px; font-weight:bold;">⚠️ 泰國注意事項</a>
-    <a href="#packing-list" style="text-decoration:none; background:#023a5a; color:white; padding:10px 16px; border-radius:8px; font-weight:bold;">🎒 行李清單</a>
+  <!-- 出遊成員頭貼 -->
+  <div class="member-group">
+    <div class="member" onclick="showCard('shi')">
+      <img src="shi.jpg" alt="施">
+      <span>睡覺施</span>
+      <div class="member-card" id="shi-card">
+        <h3>攝影施⭐⭐⭐⭐⭐</h3>
+        <p>金憨慢限時的小編，雖然會突然無意識睡著。</p>
+      </div>
+    </div>
+    <div class="member" onclick="showCard('mi')">
+      <img src="mi.jpg" alt="咪">
+      <span>咪</span>
+      <div class="member-card" id="mi-card">
+        <h3>咪咪眼⭐⭐⭐⭐⭐</h3>
+        <p>找行程小高手AKA小人國小咪，還有瞇瞇眼技能。</p>
+      </div>
+    </div>
+    <div class="member" onclick="showCard('yu')">
+      <img src="yu.jpg" alt="魚">
+      <span>魚</span>
+      <div class="member-card" id="yu-card">
+        <h3>綽綽有余 ⭐⭐⭐⭐⭐</h3>
+        <p>購物大使、殺價高手，一元都逃不出她的手掌心。</p>
+      </div>
+    </div>
+    <div class="member" onclick="showCard('hung')">
+      <img src="hung.jpg" alt="洪">
+      <span>洪</span>
+      <div class="member-card" id="hung-card">
+        <h3>任務小洪⭐⭐⭐⭐⭐</h3>
+        <p>早上睡覺會睡到最後一刻，但還是第一個出門的。</p>
+      </div>
+    </div>
   </div>
+
 </header>
+
+<style>
+.member-group {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+}
+.member {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+.member img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #023a5a;
+}
+.member span {
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
+  color: #023a5a;
+}
+
+/* 小卡片樣式 */
+.member-card {
+  display: none; 
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  background: #f0f8ff;
+  border: 2px solid #bed9e9;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 8px;
+  box-shadow: 0 4px 6px rgba(189, 184, 184, 0.2);
+  z-index: 10;
+}
+.member-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  color: #023a5a;
+}
+.member-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #072333;
+}
+</style>
 
 <section id="bts-map">
   <h2>🚆 曼谷交通地圖 BTS </h2>
@@ -127,97 +265,109 @@
  
 </div>
 
-</section>
-
 <section id="itinerary">
   <h2>📅 1/12（✈️ 抵達曼谷）</h2>
 
-  <div class="spot">
-    🕥 <strong>11:00</strong> 出發前往桃園機場
+  <div class="day-card">
+
+    <div class="spot">
+      🕥 <strong>11:00</strong> 出發前往桃園機場
+    </div>
+
+    <div class="spot">
+      🛫 <strong>13:50</strong> 台灣起飛（第一航廈）
+    </div>
+
+    <div class="spot">
+      🛬 <strong>16:45</strong> 抵達曼谷
+    </div>
+
+    <div class="spot food-link" onclick="openCard('hotel')">
+      🏨 入住飯店
+    </div>
+
+    <div class="spot">
+      🍽️ <strong>晚餐（彈性）</strong>
+      <ul style="margin-left:18px; margin-top:6px; font-size:15px;">
+        <li>🏪 7-Eleven 簡單解決</li>
+        <li>🍜 Airbnb 附近找餐廳</li>
+        <li>🌃 霓虹夜市</li>
+      </ul>
+    </div>
+
   </div>
 
-  <div class="spot">
-    🛫 <strong>13:50</strong> Taiwan 起飛 (第一航廈)
-  </div>
-
-  <div class="spot">
-    🛬 <strong>16:45</strong> 抵達曼谷
-  </div>
-
-  <div class="spot food-link" onclick="openCard('hotel')">
-    🏨 入住飯店
-  </div>
-
-  <div id="first-meal" class="spot">
-    🍽️ 晚餐：
-    <ul style="margin-left:20px; margin-top:5px;">
-      <li>711 簡單解決</li>
-      <li>Airbnb附近找餐廳</li>
-      <li>霓虹夜市</li>
-    </ul>
   <div style="text-align:right; margin-top:10px;">
-  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
-</div>
-
+    <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+  </div>
 </section>
+
 
 <section>
   <h2>📅 1/13（Central World & 水門市場）</h2>
 
-  <div class="spot">🚆 BTS Chit Lom（E1）2、6 號出口</div>
+  <div class="day-card">
 
-  <div class="spot">
-    Central World
-    <div class="time">營業時間：10:00–22:00</div>
+     <div class="spot">🚆 BTS Chit Lom(E1)2、6號出口</div>
+
+    <div class="spot food-link" onclick="openCard('centralworld')">
+      🛍️ Central World
+      <div class="time">10:00–22:00</div>
+    </div>
+
+    <div class="sub-list">
+      <div class="spot food-link" onclick="openCard('superrich')">▫ 4F SuperRich </div>
+      <div class="spot food-link" onclick="openCard('thongsmith')">▫ 3F Thong Smith </div>
+      <div class="spot food-link" onclick="openCard('chatramee')">▫ 1F Cha Tra Mue </div>
+    </div>
+
+    <div class="spot food-link" onclick="openCard('erawan')">
+      🙏 Thao Maha Brahma
+      <div class="time">06:00–22:00</div>
+    </div>
+
+    <div class="spot food-link" onclick="openCard('pondtip')">
+      🍗 水門市場
+      <div class="time">11:00–20:00</div>
+    </div>
+
+    <div class="spot food-link" onclick="openCard('topkart')">
+      🏎️ Topkart Bangkok 
+      <div class="time">10:00–22:00</div>
+    </div>
+
+    <div class="spot food-link" onclick="openCard('bigc')">
+      🛒 Big C 超市
+      <div class="time">09:00–00:00</div>
+    </div>
+
+    <div class="spot food-link" onclick="openCard('mindnmatter')">
+      💆 Mind n Matter Massage
+      <div class="time">11:00–23:00</div>
+    </div>
+
   </div>
 
-  <div class="spot">▫ 4F SuperRich 換錢</div>
-  <div class="spot">▫ 3F Thong Smith 通思密船麵</div>
-  <div class="spot">▫ 1F Cha Tra Mue 泰式奶茶</div>
-
-  <div class="spot">
-    Thao Maha Brahma（四面佛）
-    <div class="time">營業時間：06:00–22:00</div>
+  <div style="text-align:right; margin-top:10px;">
+    <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
   </div>
-
-<div class="spot food-link" onclick="openCard('pondtip')">
-  水門市場
-  <div class="time">營業時間：11:00–20:00</div>
-</div>
-
-
-  <div class="spot">
-    Topkart Bangkok 卡丁車
-    <div class="time">營業時間：10:00–22:00</div>
-  </div>
-
-  <div class="spot">
-    Big C 超市
-    <div class="time">營業時間：09:00–00:00</div>
-  </div>
-
-  <div class="spot">
-    Mind n Matter Massage
-    <div class="time">營業時間：11:00–23:00</div>
-   <div style="text-align:right; margin-top:10px;">
-  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
-</div>
 </section>
+
 
 <section>
   <h2>📅 1/14（Ari & 市區夜景）</h2>
-
+  <div class="day-card">
   <div class="spot">🚆 BTS Ari（N5）</div>
 
-  <div class="spot food-link" onclick="openCard('smizzle')">
- Smizzle Burger
-</div>
-
-  <div class="spot food-link" onclick="openCard('Yudeemee')">
- Yudeemeesuk Mango Sticky Rice Ari
-</div>
-
-  <div class="spot">☕ GUMP’s  Ari Community Space</div>
+      
+    
+    <div class="sub-list">
+      <div class="spot food-link" onclick="openCard('smizzle')">▫ 🍔 Smizzle Burger </div>
+      <div class="spot food-link" onclick="openCard('Yudeemee')">▫🥭 Yudeemeesuk Mango Sticky Rice Ari </div>
+    </div>
+    <div class="spot food-link" onclick="openCard('gumps')">
+      ☕ GUMP’s Ari Community Space
+    </div>
   <div class="spot">🚆 Chong Nonsi（S3）3 號出口</div>
 
  <div class="spot food-link" onclick="openCard('mahanakhon')">
@@ -232,68 +382,78 @@
   <span class="arrow">▼</span>
 </div>
 
-<div id="chula-food" class="fold-content">
-  <div class="spot food-link" onclick="openCard('satay')">🐷 Pork Satay Nai Song</div>
-  <div class="spot food-link" onclick="openCard('pungdet')">🥐 PUNGDET 爆漿餐包</div>
-  <div class="spot food-link" onclick="openCard('tuaytung')">🍦 Tuay Tung Ice-cream</div>
-  <div class="spot food-link" onclick="openCard('elvis')">🍜 Elvis Suki 豬肉乾冬粉</div>
-  <div class="spot food-link" onclick="openCard('jeho')">🍲 Jeh O Chula 冬蔭媽媽麵</div>
-  <div class="spot food-link" onclick="openCard('bake')">🥐 Bake A Wish Baker</div>
+<div id="chula-food" class="sub-list">
+  <div class="spot food-link" onclick="openCard('satay')">▫🐷 Pork Satay Nai Song</div>
+  <div class="spot food-link" onclick="openCard('pungdet')">▫🥐 PUNGDET 爆漿餐包</div>
+  <div class="spot food-link" onclick="openCard('tuaytung')">▫🍦 Tuay Tung Ice-cream</div>
+  <div class="spot food-link" onclick="openCard('elvis')">▫🍜 Elvis Suki 豬肉乾冬粉</div>
+  <div class="spot food-link" onclick="openCard('jeho')">▫🍲 Jeh O Chula 冬蔭媽媽麵</div>
+  <div class="spot food-link" onclick="openCard('bake')">▫🥐 Bake A Wish Baker</div>
+  </div>
  <div style="text-align:right; margin-top:10px;">
   <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
 </div>
 
 
 </section>
-
 <section>
   <h2>📅 1/15（寺廟 & 游河）</h2>
 
-  <div class="spot">🚕 鄭王廟（Grab / Bolt）</div>
+  <div class="day-card">
 
-  <div class="spot">
-    <div class="time">營業時間：08:00–18:00</div>
+    <div class="spot food-link" onclick="openCard('wat_arun')">
+      🛕 鄭王廟（Wat Arun）
+      <div class="time">08:00–18:00</div>
+    </div>
+     <div class="sub-list">
+      <div class="spot food-link" onclick="openCard('sangarun')">👘 泰服租借｜sangarun.thaicostume </div>
+      
+    </div>
+    <div class="spot food-link" onclick="openCard('iconsiam')">
+      ⛵ ICONSIAM 暹羅天地（N8 → I★）
+      <div class="time">10:00–22:00</div>
+    </div>
+
+    <div class="spot food-link" onclick="openCard('asiatique')">
+      🌃 河濱夜市 Asiatique（I★ → A★）
+      <div class="time">16:00–00:00</div>
+    </div>
+
   </div>
 
-  <div class="spot">
-    ⛵ICONSIAM 暹羅天地(N8 to I★)
-    <div class="time">營業時間：10:00–22:00</div>
-  </div>
-
-   <div class="spot">
-    ⛵河濱夜市 (I★ to A★)
-    <div class="time">營業時間：16:00–00:00</div>
   <div style="text-align:right; margin-top:10px;">
-  <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
-</div>
-  
+    <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+  </div>
 </section>
+
 
 <section>
   <h2>📅 1/16（市集日）</h2>
+ <div class="day-card">
 
   <div class="spot">🚆 Khlong Toei（BL24）</div>
 
-<div class="spot food-link" onclick="openCard('phedmark')">
-  🌶️ Phed Mark 
-</div>
 
-<div class="spot food-link" onclick="openCard('maevaree')">
-  🥭 Mae Varee
-</div>
 
+
+    <div class="sub-list">
+      <div class="spot food-link" onclick="openCard('phedmark')">▫  🌶️ Phed Mark   </div>
+      <div class="spot food-link" onclick="openCard('maevaree')">▫🥭 Mae Varee </div>
+</div>
 
   <div class="spot">🚆 Yaek Kor Por Aor（N23）4 號出口</div>
 
-  <div class="spot">
-    Save One Go Market
-    <div class="time">營業時間：16:00–00:00</div>
-  </div>
+   <div class="spot food-link" onclick="openCard('saveonego')">
+      🛍️ Save One Go Market
+      <div class="time">16:00–00:00</div>
+    </div>
 
   <div class="spot">🚆 Mo Chit（N8）</div>
-    <div class="spot">
-    恰圖恰假日市集
-    <div class="time">營業時間：18:00~00:00</div>
+     <div class="spot food-link" onclick="openCard('chatuchak')">
+      🛒 恰圖恰假日市集
+      <div class="time">18:00–00:00</div>
+    </div>
+      </div>
    <div style="text-align:right; margin-top:10px;">
   <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
 </div>
@@ -301,7 +461,7 @@
 
 <section>
   <h2>📅 1/17（✈️ 回台灣）</h2>
-
+<div class="day-card">
   <div class="spot">
     🕥 <strong>10:30</strong> 出發前往機場
   </div>
@@ -309,9 +469,10 @@
   <div class="spot">
     🛫 <strong>14:05</strong> 起飛
   </div>
-
+  
   <div class="spot">
     🛬 <strong>18:40</strong> 抵達台灣
+    </div>
    <div style="text-align:right; margin-top:10px;">
   <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
 </div>
@@ -324,9 +485,10 @@
   <ol style="padding-left: 20px; line-height: 1.6;">
     <li>
       <strong>TDAC 泰國數位入境卡：</strong>需於抵達前 72 小時內申請 (免費!)  
-      <a href="https://bkk.com.tw/tdac/#TDAC_%E6%B3%B0%E5%9C%8B%E6%95%B8%E4%BD%8D%E5%85%A5%E5%A2%83%E5%8D%A1%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F" target="_blank">申請連結</a>
+      <a href="https://bkk.com.tw/tdac/#TDAC_%E6%B3%B0%E5%9C%8B%E6%95%B8%E4%BD%8D%E5%85%A5%E5%A2%83%E5%8D%A1%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F" target="_blank">申請教學</a>
+      <a href="https://tdac.immigration.go.th/arrival-card/#/home" target="_blank">申請連結</a>
     </li>
-    <li><strong>機場接送：</strong>已提前安排接送。</li>
+    <li><strong>機場接送：</strong>已安排接送。</li>
     <li>
       <strong>交通：</strong>建議先下載並註冊 Grab / Bolt，盡量不要路邊攔車。  
       嘟嘟車可體驗，記得殺價（建議從5折開始談），尖峰時段曼谷塞車很嚴重，搭 BTS / MRT 比叫車快。BTS 卡可在 KKday 先買，一張約100元。
@@ -341,7 +503,7 @@
     <li>
       <strong>電壓與插座：</strong>泰國 220V，插座主要為 A/B/C 型，如果電器的電壓只限110V，要自備變壓器。
     </li>
-    <li><strong>旅平險：</strong>建議購買保障旅行期間的保險。</li>
+    <li><strong>旅平險：</strong>請一定要購買旅平險跟旅遊不便險。</li>
     <li>
       <strong>宗教禮儀：</strong>進入寺廟等場所請脫鞋、穿著莊重。女性禁止無袖、短褲/短裙、露背裝、拖鞋；男性建議短袖長褲。
     </li>
@@ -355,274 +517,327 @@
    <div style="text-align:right; margin-top:10px;">
   <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
 </div>
-</section>
 <section id="packing-list">
-  <h2>🎒 行李清單（四人版）</h2>
+<section id="packing-list">
+  <h2>🎒 行李清單</h2>
 
+  <!-- 重要證件 -->
   <div class="spot">
     📑 <strong>重要證件</strong>
-    <ul>
-      <li>護照（效期 6 個月以上）
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="p1施">施</label>
-          <label><input type="checkbox" id="p1咪">咪</label>
-          <label><input type="checkbox" id="p1魚">魚</label>
-          <label><input type="checkbox" id="p1洪">洪</label>
-        </div>
-      </li>
-      <li>TDAC 入境卡 QR Code
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="p2施">施</label>
-          <label><input type="checkbox" id="p2咪">咪</label>
-          <label><input type="checkbox" id="p2魚">魚</label>
-          <label><input type="checkbox" id="p2洪">洪</label>
-        </div>
-      </li>
-      <li>機票、住宿證明
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="p3施">施</label>
-          <label><input type="checkbox" id="p3咪">咪</label>
-          <label><input type="checkbox" id="p3魚">魚</label>
-          <label><input type="checkbox" id="p3洪">洪</label>
-        </div>
-      </li>
-      <li>旅平險
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="p4施">施</label>
-          <label><input type="checkbox" id="p4咪">咪</label>
-          <label><input type="checkbox" id="p4魚">魚</label>
-          <label><input type="checkbox" id="p4洪">洪</label>
-        </div>
-      </li>
-      <li>身分證、健保卡
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="p5施">施</label>
-          <label><input type="checkbox" id="p5咪">咪</label>
-          <label><input type="checkbox" id="p5魚">魚</label>
-          <label><input type="checkbox" id="p5洪">洪</label>
-        </div>
-      </li>
-    </ul>
+
+    <div class="item-box">
+      護照（效期 6 個月以上）
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      TDAC 入境卡 QR Code
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      機票、住宿證明
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      旅平險
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      身分證、健保卡
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
   </div>
 
+  <!-- 衣物 -->
   <div class="spot">
     👕 <strong>衣物</strong>
-    <ul>
-      <li>換洗衣褲
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="c1施">施</label>
-          <label><input type="checkbox" id="c1咪">咪</label>
-          <label><input type="checkbox" id="c1魚">魚</label>
-          <label><input type="checkbox" id="c1洪">洪</label>
-        </div>
-      </li>
-      <li>薄長袖或薄外套
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="c2施">施</label>
-          <label><input type="checkbox" id="c2咪">咪</label>
-          <label><input type="checkbox" id="c2魚">魚</label>
-          <label><input type="checkbox" id="c2洪">洪</label>
-        </div>
-      </li>
-      <li>內衣褲、襪子
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="c3施">施</label>
-          <label><input type="checkbox" id="c3咪">咪</label>
-          <label><input type="checkbox" id="c3魚">魚</label>
-          <label><input type="checkbox" id="c3洪">洪</label>
-        </div>
-      </li>
-      <li>墨鏡
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="c4施">施</label>
-          <label><input type="checkbox" id="c4咪">咪</label>
-          <label><input type="checkbox" id="c4魚">魚</label>
-          <label><input type="checkbox" id="c4洪">洪</label>
-        </div>
-      </li>
-      <li>帽子
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="c5施">施</label>
-          <label><input type="checkbox" id="c5咪">咪</label>
-          <label><input type="checkbox" id="c5魚">魚</label>
-          <label><input type="checkbox" id="c5洪">洪</label>
-        </div>
-      </li>
-    </ul>
+
+    <div class="item-box">
+      換洗衣褲
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      薄長袖或薄外套
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      內衣褲、襪子
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      墨鏡
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      帽子
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
   </div>
 
+  <!-- 電子用品 -->
   <div class="spot">
     📱 <strong>電子用品</strong>
-    <ul>
-      <li>充電線
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="e1施">施</label>
-          <label><input type="checkbox" id="e1咪">咪</label>
-          <label><input type="checkbox" id="e1魚">魚</label>
-          <label><input type="checkbox" id="e1洪">洪</label>
-        </div>
-      </li>
-      <li>行動電源（≤32000mAh）
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="e2施">施</label>
-          <label><input type="checkbox" id="e2咪">咪</label>
-          <label><input type="checkbox" id="e2魚">魚</label>
-          <label><input type="checkbox" id="e2洪">洪</label>
-        </div>
-      </li>
-      <li>轉接插頭（泰國 220V，A/B/C 型）
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="e3施">施</label>
-          <label><input type="checkbox" id="e3咪">咪</label>
-          <label><input type="checkbox" id="e3魚">魚</label>
-          <label><input type="checkbox" id="e3洪">洪</label>
-        </div>
-      </li>
-      <li>耳機
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="e4施">施</label>
-          <label><input type="checkbox" id="e4咪">咪</label>
-          <label><input type="checkbox" id="e4魚">魚</label>
-          <label><input type="checkbox" id="e4洪">洪</label>
-        </div>
-      </li>
-    </ul>
+
+    <div class="item-box">
+      充電線
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      行動電源（≤32000mAh）
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      轉接插頭（泰國 220V，A/B/C 型）
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      耳機
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
   </div>
 
+  <!-- 盥洗與藥品 -->
   <div class="spot">
     🧴 <strong>盥洗與藥品</strong>
-    <ul>
-      <li>防曬乳
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="h1施">施</label>
-          <label><input type="checkbox" id="h1咪">咪</label>
-          <label><input type="checkbox" id="h1魚">魚</label>
-          <label><input type="checkbox" id="h1洪">洪</label>
-        </div>
-      </li>
-      <li>防蚊液
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="h2施">施</label>
-          <label><input type="checkbox" id="h2咪">咪</label>
-          <label><input type="checkbox" id="h2魚">魚</label>
-          <label><input type="checkbox" id="h2洪">洪</label>
-        </div>
-      </li>
-      <li>腸胃藥
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="h3施">施</label>
-          <label><input type="checkbox" id="h3咪">咪</label>
-          <label><input type="checkbox" id="h3魚">魚</label>
-          <label><input type="checkbox" id="h3洪">洪</label>
-        </div>
-      </li>
-      <li>止痛藥
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="h4施">施</label>
-          <label><input type="checkbox" id="h4咪">咪</label>
-          <label><input type="checkbox" id="h4魚">魚</label>
-          <label><input type="checkbox" id="h4洪">洪</label>
-        </div>
-      </li>
-      <li>濕紙巾、衛生紙
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="h5施">施</label>
-          <label><input type="checkbox" id="h5咪">咪</label>
-          <label><input type="checkbox" id="h5魚">魚</label>
-          <label><input type="checkbox" id="h5洪">洪</label>
-        </div>
-      </li>
-      <li>隱眼、隱眼藥水
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="h6施">施</label>
-          <label><input type="checkbox" id="h6咪">咪</label>
-          <label><input type="checkbox" id="h6魚">魚</label>
-          <label><input type="checkbox" id="h6洪">洪</label>
-        </div>
-      </li>
-      <li>化妝品
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="h7施">施</label>
-          <label><input type="checkbox" id="h7咪">咪</label>
-          <label><input type="checkbox" id="h7魚">魚</label>
-          <label><input type="checkbox" id="h7洪">洪</label>
-        </div>
-      </li>
-      <li>酒精
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="h8施">施</label>
-          <label><input type="checkbox" id="h8咪">咪</label>
-          <label><input type="checkbox" id="h8魚">魚</label>
-          <label><input type="checkbox" id="h8洪">洪</label>
-        </div>
-      </li>
-    </ul>
+
+    <div class="item-box">
+      防曬乳
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      防蚊液
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      腸胃藥、止吐藥
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      止痛藥、感冒藥
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      濕紙巾、衛生紙
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      隱眼、隱眼藥水
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      化妝品
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      酒精
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
   </div>
 
+  <!-- 錢 -->
   <div class="spot">
     💰 <strong>錢</strong>
-    <ul>
-      <li>錢包
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="m1施">施</label>
-          <label><input type="checkbox" id="m1咪">咪</label>
-          <label><input type="checkbox" id="m1魚">魚</label>
-          <label><input type="checkbox" id="m1洪">洪</label>
-        </div>
-      </li>
-      <li>泰銖或台幣一萬~一萬五
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="m2施">施</label>
-          <label><input type="checkbox" id="m2咪">咪</label>
-          <label><input type="checkbox" id="m2魚">魚</label>
-          <label><input type="checkbox" id="m2洪">洪</label>
-        </div>
-      </li>
-      <li>零錢（公廁、小費）
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="m3施">施</label>
-          <label><input type="checkbox" id="m3咪">咪</label>
-          <label><input type="checkbox" id="m3魚">魚</label>
-          <label><input type="checkbox" id="m3洪">洪</label>
-        </div>
-      </li>
-    </ul>
-    <div style="text-align:right; margin-top:10px;">
-      <a href="#top" style="text-decoration:none; color:#023a5a; font-weight:bold;">🔝</a>
+
+    <div class="item-box">
+      錢包
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      泰銖或台幣 10000~15000
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
+    </div>
+
+    <div class="item-box">
+      零錢（公廁、小費）
+      <div class="checkbox-row">
+        <span>施 <span class="shi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>咪 <span class="mi" onclick="toggleHeart(this)">🤍</span></span>
+        <span>魚 <span class="yu" onclick="toggleHeart(this)">🤍</span></span>
+        <span>洪 <span class="hong" onclick="toggleHeart(this)">🤍</span></span>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  section ul {
-    padding-left: 20px;
-    list-style: none;
-  }
-  section li {
-    margin-bottom: 12px;
-    font-size: 16px;
-  }
-  .checkbox-group {
-    display: grid;
-    grid-template-columns: repeat(4, 50px);
-    gap: 4px;
-    margin-top: 4px;
-  }
-  .checkbox-group label {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-  }
-  .checkbox-group input[type="checkbox"] {
-    transform: scale(1.2);
-    cursor: pointer;
-  }
+.item-box {
+  border: 2px solid #80b1ce;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  background-color: #86bbe91a;
+}
+.checkbox-row {
+  display: flex;
+  gap: 30px;
+  margin-top: 6px;
+}
+.checkbox-row span {
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+.checkbox-row span span {
+  font-size: 22px;
+  margin-left: 6px;
+}
 </style>
+
+<script>
+  function toggleHeart(el) {
+    const hearts = {
+      "shi": "❤️",
+      "mi": "💛",
+      "yu": "💚",
+      "hong": "💙"
+    };
+    const cls = el.className;
+    el.innerHTML = el.innerHTML === hearts[cls] ? "🤍" : hearts[cls];
+  }
+</script>
 
 
 <footer>
-  © 金憨曼行程｜出任務小洪2026
+  © 金憨曼行程｜出任務小洪和三個笨協作 © 2026
 </footer>
 <div id="modal" class="modal" onclick="closeCard()">
   <div class="modal-card" onclick="event.stopPropagation()">
@@ -728,11 +943,113 @@ hotel: {
   must: "盥洗用具要自備",
   map: "https://www.airbnb.com.tw/rooms/33435164?source_impression_id=p3_1766849548_P3EkOnu94PApHO7G"
 },
+centralworld: {
+  title: "🛍️ Central World",
+  time: "10:00–22:00",
+  must: "曼谷最大購物中心之一",
+  map: "https://maps.google.com/?q=CentralWorld"
+},
+superrich: {
+  title: "💱 SuperRich 換錢",
+  time: "",
+  must: "匯率好比較好，記得帶護照",
+  map: "https://maps.google.com/?q=SuperRich+CentralWorld"
+},
+thongsmith: {
+  title: "🍜 Thong Smith",
+  time: "",
+  must: "必點：船麵",
+  map: "https://maps.google.com/?q=Thong+Smith+CentralWorld"
+},
+chatramee: {
+  title: "🧋 Cha Tra Mue",
+  time: "",
+  must: "手標泰式奶茶",
+  map: "https://maps.google.com/?q=Cha+Tra+Mue+CentralWorld"
+},
+erawan: {
+  title: "🙏 四面佛",
+  time: "06:00–22:00",
+  must: "參拜請順時針",
+  map: "https://maps.google.com/?q=Erawan+Shrine"
+},
+topkart: {
+  title: "🏎️ Topkart Bangkok卡丁車",
+  time: "10:00–22:00",
+  must: "一人一台700泰銖，兩人一台800泰銖",
+  map: "https://maps.google.com/?q=Topkart+Bangkok"
+},
+bigc: {
+  title: "🛒 Big C",
+  time: "09:00–00:00",
+  must: "零食、伴手禮集中地",
+  map: "https://maps.google.com/?q=Big+C+Ratchadamri"
+},
+mindnmatter: {
+  title: "💆 Mind n Matter Massage",
+  time: "營業時間：11:00–23:00",
+  must: "可先在Klook買方案",
+  map: "https://maps.google.com/?q=Mind+n+Matter+Massage+Bangkok",
+  klook: "https://www.klook.com/zh-TW/activity/81547-mind-n-matter-massage-chidlom-bangkok/?spm=SearchResult.SearchResult_LIST&clickId=b6b23cc526"
+},
+gumps: {
+  title: "☕ GUMP’s Ari Community Space",
+  time: "10:00-20:30",
+  must: "拍照、咖啡、文創小店，很像駁二的地方",
+  map: "https://maps.google.com/?q=GUMP%27s+Ari"
+},
+wat_arun: {
+  title: "🛕 鄭王廟 Wat Arun",
+  time: "營業時間：08:00–18:00",
+  must: "⚠️ 注意事項：需穿有袖上衣、長褲或過膝裙，不可露肩、露肚、短褲；進入主殿需脫鞋。建議早上前往，光線好又不熱。",
+  map: "https://maps.app.goo.gl/eG85Kew8UJ6QVQFv9"
+},
 
+sangarun: {
+  title: "👘 sangarun.thai costume",
+  time: "營業時間： 08:00–18:00",
+  must: "鄭王廟附近泰服租借店，適合拍照。通常含服裝＋簡單配件，建議先確認尺寸與歸還時間。",
+  map: "https://maps.google.com/?q=sangarun.thaicostume"
+},
+
+iconsiam: {
+  title: "⛵ ICONSIAM 暹羅天地",
+  time: "營業時間：10:00–22:00",
+  must: "曼谷最大河岸購物中心，特色是將泰國傳統水上市場搬進室內，美食街、伴手禮一次搞定。",
+  map: "https://maps.google.com/?q=ICONSIAM"
+},
+
+asiatique: {
+  title: "🌃 河濱夜市 Asiatique",
+  time: "營業時間：16:00–00:00",
+  must: "河畔夜景、市集、餐廳與摩天輪，還可看泰拳秀跟人妖秀，很適合晚上散步拍照。",
+  map: "https://maps.google.com/?q=Asiatique+The+Riverfront"
+},
+chatuchak: {
+  title: "🛒 恰圖恰假日市集 Chatuchak",
+  time: "營業時間：18:00–00:00（週末最熱鬧）",
+  must: "全球最大市集之一，建議穿好走的鞋、帶現金，看到想買的就買，不然會走不回去。",
+  map: "https://maps.google.com/?q=Chatuchak+Weekend+Market"
+},
+saveonego: {
+  title: "🛍️ Save One Go Market",
+  time: "營業時間：16:00–00:00",
+  must: "在地夜市型市集，攤位集中、好逛不擁擠，吃喝拍照都很舒服。",
+  map: "https://maps.google.com/?q=Save+One+Go+Market"
+},
 
 
   };
-
+ function toggleHeart(el) {
+    const hearts = {
+      "shi": "🩷",
+      "mi": "💛",
+      "yu": "💜",
+      "hong": "💙"
+    };
+    const cls = el.className;
+    el.innerHTML = el.innerHTML === hearts[cls] ? "🤍" : hearts[cls];
+  }
   function openCard(key) {
     const data = foodData[key];
     document.getElementById("modal-title").innerText = data.title;
@@ -753,6 +1070,23 @@ hotel: {
 }
 function closeCard() {
   document.getElementById("modal").style.display = "none";
+}
+function showCard(member) {
+  
+  const cards = document.querySelectorAll('.member-card');
+  cards.forEach(c => c.style.display = 'none');
+
+  
+  const card = document.getElementById(member + '-card');
+  card.style.display = 'block';
+
+  
+  document.addEventListener('click', function hideCard(e) {
+    if (!e.target.closest('.member')) {
+      card.style.display = 'none';
+      document.removeEventListener('click', hideCard);
+    }
+  });
 }
 </script>
 
